@@ -15,11 +15,20 @@ sequence = input("enter the sequence: ")
 
 start = time.time()
 
-result = calculate_tm(sequence)
+sequence_length = len(sequence)
+primer_counter = 0
+
+for primer_length in range(20, 25):
+    for position in range(0, sequence_length - primer_length + 1):
+        primer = sequence[position:position + primer_length]
+        result = calculate_tm(primer)
+        print(primer)
+        print(result)
+        primer_counter += 1
 
 end = time.time()
 
-print(result)
+print("Primer counter: " + str(primer_counter))
 print(end - start)
 
 #test: AGTCGATCGATACGTACCTGATCGTATCGATCGATCGATCGATGCATGACGTACGATCGTAGTAGCGTAGCTGATCGATCGTGATCGATGCTAGCTAGCGATCGATGCTAGCTAGCTAGCTAGCTCATCAG
